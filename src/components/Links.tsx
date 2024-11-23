@@ -1,11 +1,11 @@
-import { FormInput, Home, IdCard, UserCheck } from 'lucide-react'
+import { ChartColumn, FormInput, IdCard, UserCheck } from 'lucide-react'
 import React from 'react'
 
 const links = [
     {
         title: 'DASHBOARD',
         url: '/dashboard',
-        icon: Home,
+        icon: ChartColumn,
     },
     {
         title: 'FUNCIONÁRIOS',
