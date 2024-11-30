@@ -12,6 +12,7 @@ import { getAge } from '@/app/api'
 import { prisma } from '@/lib/prisma'
 import { Button } from '@/components/ui/button'
 import { Edit, Trash2 } from 'lucide-react'
+import Link from 'next/link'
 
 
 const EmployeesPage = async () => {
@@ -31,7 +32,11 @@ const EmployeesPage = async () => {
             <TableBody>
                 {allEmployees.map((employee) => (
                     <TableRow key={employee.id}>
-                        <TableCell>{employee.name}</TableCell>
+                        <TableCell>
+                            <Link href={`/dashboard/employees/${employee.id}`} key={employee.id}>
+                                {employee.name}
+                            </Link>
+                        </TableCell>
                         <TableCell>{employee.email}</TableCell>
                         <TableCell>{getAge(employee.birthDate)}</TableCell>
                         <TableCell>{employee.phoneNumber} | {employee.mobile}</TableCell>

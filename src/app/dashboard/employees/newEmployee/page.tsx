@@ -1,8 +1,13 @@
+import { InputForm } from '@/app/dashboard/employees/newEmployee/InputForm'
 import React from 'react'
 
-const NewEmployee = () => {
+const NewEmployee = async () => {
+
     return (
-        <div>NewEmployee</div>
+        <div className="">
+            <InputForm />
+
+        </div>
     )
 }
 

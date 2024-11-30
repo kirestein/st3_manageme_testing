@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/AppSidebar";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "ST3 MANAGEME TEST",
@@ -22,6 +23,7 @@ export default function RootLayout({
           <AppSidebar />
           <SidebarTrigger />
           {children}
+          <Toaster />
         </SidebarProvider>
       </body>
 
