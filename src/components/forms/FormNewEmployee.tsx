@@ -1,5 +1,6 @@
 'use client'
-import { NewEmployeeSchema, useNewEmployeeForm } from '@/lib/schemas/NewEmployee'
+import { NewEmployeeSchema } from '@/lib/schemas/NewEmployee'
+import { useForm } from 'react-hook-form'
 import React from 'react'
 import { z } from 'zod'
 import { toast } from '@/hooks/use-toast'
@@ -9,8 +10,19 @@ import { Button } from '../ui/button'
 import BirthdatePicker from './BirthdatePicker'
 
 const FormNewEmployee = () => {
-
-    const form = useNewEmployeeForm()
+    const form = useForm({
+        resolver: async (data) => {
+            try {
+                const parsedData = NewEmployeeSchema.parse(data);
+                return { values: parsedData, errors: {} };
+            } catch (error) {
+                if (error instanceof z.ZodError) {
+                    return { values: {}, errors: error.formErrors.fieldErrors };
+                }
+                return { values: {}, errors: {} };
+            }
+        }
+    })
 
     const removeCircularReferences = (obj: Record<string, unknown>) => {
         const seen = new WeakSet();

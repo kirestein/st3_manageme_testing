@@ -17,3 +17,5 @@ export const NewEmployeeSchema = z.object({
     .min(9, { message: "Telefone é obrigatório" })
     .optional(),
 });
+
+export type useNewEmployee = z.infer<typeof NewEmployeeSchema>;
